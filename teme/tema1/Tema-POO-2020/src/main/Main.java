@@ -1,11 +1,12 @@
 package main;
 
-import checker.Checkstyle;
 import checker.Checker;
+import checker.Checkstyle;
 import common.Constants;
 import fileio.Input;
 import fileio.InputLoader;
 import fileio.Writer;
+import operations.Commands;
 import org.json.simple.JSONArray;
 
 import java.io.File;
@@ -27,6 +28,7 @@ public final class Main {
 
     /**
      * Call the main checker and the coding style checker
+     *
      * @param args from command line
      * @throws IOException in case of exceptions to reading / writing
      */
@@ -66,12 +68,10 @@ public final class Main {
                               final String filePath2) throws IOException {
         InputLoader inputLoader = new InputLoader(filePath1);
         Input input = inputLoader.readData();
-
         Writer fileWriter = new Writer(filePath2);
         JSONArray arrayResult = new JSONArray();
-
-        //TODO add here the entry point to your implementation
-
+        Commands commands = new Commands(input, arrayResult, fileWriter);
+        commands.iterateCommands();
         fileWriter.closeJSON(arrayResult);
     }
 }
