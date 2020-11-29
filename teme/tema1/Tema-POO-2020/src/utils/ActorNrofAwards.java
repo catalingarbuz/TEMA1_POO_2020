@@ -17,23 +17,44 @@ public class ActorNrofAwards {
     public ActorNrofAwards() {
     }
 
+    /**
+     *
+     * @return actor name
+     */
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    /**
+     *
+     * @param name set name
+     */
+    public void setName(final String name) {
         this.name = name;
     }
 
+    /**
+     *
+     * @return nr of awards
+     */
     public Integer getNrawards() {
         return nrawards;
     }
 
-    public void setNrawards(Integer nrawards) {
+    /**
+     *
+     * @param nrawards set nr awards
+     */
+    public void setNrawards(final Integer nrawards) {
         this.nrawards = nrawards;
     }
 
-    public int getActorNrofAwards(ActorInputData actor) {
+    /**
+     *
+     * @param actor actor
+     * @return actor nr of awards
+     */
+    public int getActorNrofAwards(final ActorInputData actor) {
         int nrofawards = 0;
         Set<ActorsAwards> awards = actor.getAwards().keySet();
         for (ActorsAwards award : awards) {

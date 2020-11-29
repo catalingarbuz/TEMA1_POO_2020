@@ -1,2 +1,6 @@
 Starting audit...
+[ERROR] C:\Users\Catalin\Desktop\TEMA-POO-2020\teme\teme\tema1\Tema-POO-2020\.\src\entertainment\Season.java:24:38: Variable 'ratings' must be private and have accessor methods. [VisibilityModifier]
+[ERROR] C:\Users\Catalin\Desktop\TEMA-POO-2020\teme\teme\tema1\Tema-POO-2020\.\src\fileio\MovieInputData.java:18:38: Variable 'raiting' must be private and have accessor methods. [VisibilityModifier]
+[ERROR] C:\Users\Catalin\Desktop\TEMA-POO-2020\teme\teme\tema1\Tema-POO-2020\.\src\fileio\SerialInputData.java:22:38: Variable 'nrofusers' must be private and have accessor methods. [VisibilityModifier]
 Audit done.
+Checkstyle ends with 3 errors.

@@ -45,9 +45,9 @@ public final class SerialInputData extends ShowInput {
      * @return Serial Rating
      */
     public double getSerialRating() {
-        ArrayList<Season> seasons = this.getSeasons();
+        ArrayList<Season> videoseasons = this.getSeasons();
         double serialrating = 0;
-        for (Season season : seasons) {
+        for (Season season : videoseasons) {
              // Iterating through Serial seasons
             serialrating = serialrating + season.getSeasonRating(this.getNrOfUsers());
         }

@@ -12,19 +12,35 @@ public class Actor {
     public Actor() {
     }
 
+    /**
+     *
+     * @return actor name
+     */
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    /**
+     *
+     * @param name set name
+     */
+    public void setName(final String name) {
         this.name = name;
     }
 
+    /**
+     *
+      * @return rating
+     */
     public Double getRating() {
         return rating;
     }
 
-    public void setRating(Double rating) {
+    /**
+     *
+     * @param rating set rating
+     */
+    public void setRating(final Double rating) {
         this.rating = rating;
     }
 }
