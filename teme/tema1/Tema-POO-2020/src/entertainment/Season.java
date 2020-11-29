@@ -1,7 +1,8 @@
 package entertainment;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Enumeration;
+import java.util.Hashtable;
+
 
 /**
  * Information about a season of a tv show
@@ -20,12 +21,12 @@ public final class Season {
     /**
      * List of ratings for each season
      */
-    private List<Double> ratings;
+    public Hashtable<String, Double> ratings;
 
     public Season(final int currentSeason, final int duration) {
         this.currentSeason = currentSeason;
         this.duration = duration;
-        this.ratings = new ArrayList<>();
+        this.ratings = new Hashtable<>();
     }
 
     public int getDuration() {
@@ -36,12 +37,19 @@ public final class Season {
         this.duration = duration;
     }
 
-    public List<Double> getRatings() {
-        return ratings;
-    }
-
-    public void setRatings(final List<Double> ratings) {
-        this.ratings = ratings;
+    /**
+     *
+     * @param nrofusers distinct users who rated a season
+     * @return Season rating
+     */
+    public double getSeasonRating(final int nrofusers) {
+        Enumeration<String> enumeration = ratings.keys();
+        double totalrating = 0;
+        while (enumeration.hasMoreElements()) {
+            String key = enumeration.nextElement();
+            totalrating = totalrating + ratings.get(key);
+        }
+        return totalrating / nrofusers;
     }
 
     @Override
