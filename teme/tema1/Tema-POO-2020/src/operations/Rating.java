@@ -9,6 +9,7 @@ import fileio.Writer;
 import org.json.simple.JSONArray;
 
 import java.io.IOException;
+import java.util.Hashtable;
 import java.util.List;
 
 @SuppressWarnings("unchecked")
@@ -27,20 +28,24 @@ public class Rating {
     public void addRating(final List<UserInputData> userInputData, final String title,
                           final String username, final JSONArray arrayResult, final Writer file,
                           final ActionInputData command, final Input input) throws IOException {
+        Hashtable<String, Double> hashseason;
+        Hashtable<String, Double> hashusers;
         for (UserInputData userData : userInputData) {
             if (userData.getUsername().equals(username)) {
                 if (userData.getHistory().containsKey(title)) {
                     if (command.getSeasonNumber() == 0) {
                         for (MovieInputData movie : input.getMovies()) {
                             if (title.equals(movie.getTitle())
-                                    && !movie.raiting.containsKey(username)) {
-                                movie.raiting.put(userData.getUsername(), command.getGrade());
+                                    && !movie.getRaiting().containsKey(username)) {
+                                hashusers = new Hashtable<>();
+                                hashusers.put(userData.getUsername(), command.getGrade());
+                                movie.setRaiting(hashusers);
                                 userData.setRatingnr(userData.getRatingnr() + 1);
                                 arrayResult.add(file.writeFile(command.getActionId(), "Success",
                                         "success -> " + title + " was rated with "
                                                 + command.getGrade() + " by " + username));
                             } else if (title.equals(movie.getTitle())
-                                    && movie.raiting.containsKey(username)) {
+                                    && movie.getRaiting().containsKey(username)) {
                                 arrayResult.add(file.writeFile(command.getActionId(), "Error",
                                         "error -> " + movie.getTitle()
                                                 + " has been already rated"));
@@ -51,17 +56,21 @@ public class Rating {
                         for (SerialInputData serial : input.getSerials()) {
                             if (title.equals(serial.getTitle())
                                     && !serial.getSeasons().get(command.getSeasonNumber() - 1)
-                                            .ratings.containsKey(username)) {
+                                            .getRatings().containsKey(username)) {
+                                hashseason = new Hashtable<>();
+                                hashusers = new Hashtable<>();
+                                hashseason.put(username, command.getGrade());
                                 serial.getSeasons().get(command.getSeasonNumber() - 1)
-                                        .ratings.put(username, command.getGrade());
+                                        .setRatings(hashseason);
                                 userData.setRatingnr(userData.getRatingnr() + 1);
                                 arrayResult.add(file.writeFile(command.getActionId(), "Success",
                                         "success -> " + title + " was rated with "
                                                 + command.getGrade() + " by " + username));
-                                serial.nrofusers.put(username, 1d);
+                                hashusers.put(username, 1d);
+                                serial.setNrofusers(hashusers);
                             } else if (title.equals(serial.getTitle())
                                     && serial.getSeasons().get(command.getSeasonNumber() - 1)
-                                    .ratings.containsKey(username)) {
+                                    .getRatings().containsKey(username)) {
                                 arrayResult.add(file.writeFile(command.getActionId(), "Error",
                                         "error -> " + serial.getTitle()
                                                 + " has been already rated"));

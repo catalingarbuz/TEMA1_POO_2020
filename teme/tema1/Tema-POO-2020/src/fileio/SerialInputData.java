@@ -19,7 +19,7 @@ public final class SerialInputData extends ShowInput {
     /**
      * Season list
      */
-    public Hashtable<String, Double> nrofusers;
+    private Hashtable<String, Double> nrofusers;
     private final ArrayList<Season> seasons;
 
     public SerialInputData(final String title, final ArrayList<String> cast,
@@ -40,6 +40,21 @@ public final class SerialInputData extends ShowInput {
         return seasons;
     }
 
+    /**
+     *
+     * @return hash table with number of distinct users
+     */
+    public Hashtable<String, Double> getNrofusers() {
+        return nrofusers;
+    }
+
+    /**
+     *
+     * @param nrofusers hastable with distinct users
+     */
+    public void setNrofusers(final Hashtable<String, Double> nrofusers) {
+        this.nrofusers.putAll(nrofusers);
+    }
     /**
      *
      * @return Serial Rating

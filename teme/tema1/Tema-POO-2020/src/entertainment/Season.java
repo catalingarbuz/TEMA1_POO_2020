@@ -21,7 +21,7 @@ public final class Season {
     /**
      * List of ratings for each season
      */
-    public Hashtable<String, Double> ratings;
+    private Hashtable<String, Double> ratings;
 
     public Season(final int currentSeason, final int duration) {
         this.currentSeason = currentSeason;
@@ -35,6 +35,22 @@ public final class Season {
 
     public void setDuration(final int duration) {
         this.duration = duration;
+    }
+
+    /**
+     *
+     * @return hashtable with distinct users and ratings
+     */
+    public Hashtable<String, Double> getRatings() {
+        return ratings;
+    }
+
+    /**
+     *
+     * @param ratings hashtable of users and ratings
+     */
+    public void setRatings(final Hashtable<String, Double> ratings) {
+        this.ratings.putAll(ratings);
     }
 
     /**

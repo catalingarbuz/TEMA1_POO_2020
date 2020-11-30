@@ -15,7 +15,7 @@ public final class MovieInputData extends ShowInput {
      * Duration in minutes of a season
      */
     private final int duration;
-    public Hashtable<String, Double> raiting;
+    private Hashtable<String, Double> raiting;
 
     public MovieInputData(final String title, final ArrayList<String> cast,
                           final ArrayList<String> genres, final int year,
@@ -27,6 +27,22 @@ public final class MovieInputData extends ShowInput {
 
     public int getDuration() {
         return duration;
+    }
+
+    /**
+     *
+     * @return hashtable with movie distinct users and their ratings
+     */
+    public Hashtable<String, Double> getRaiting() {
+        return raiting;
+    }
+
+    /**
+     *
+     * @param raiting hashtable with movie distinct users and their ratings
+     */
+    public void setRaiting(final Hashtable<String, Double> raiting) {
+        this.raiting.putAll(raiting);
     }
 
     /**
